@@ -1,47 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}! Dennis
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>here are some examples of forms custom validations </h2>
 
-<input type="button" class="btn btn-success" value="testing server" (click)="testServer()"> -->
-
-<div class="container mat-elevation-z8" style="margin-top: 20px;padding-top: 20px;background-color: white">
+<div class="container mat-elevation-z8 spacing-top"  >
   <form class="example-form">
     <div class="row">
-        <div class="col-md-3">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi" />
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi" />
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi" />
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-            <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Leave a comment"
-                  cdkTextareaAutosize
-                  #autosize="cdkTextareaAutosize"
-                  cdkAutosizeMaxRows="20"></textarea>
-              </mat-form-field>
-        </div>
-    </div>
-      <div class="row">
-        <div class="col-12">
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Leave a comment" ></textarea>
-          </mat-form-field>
-        </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Favorite food" value="Sushi" />
+        </mat-form-field>
       </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Favorite food" value="Sushi" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Favorite food" value="Sushi" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 40px;padding-bottom: 24px;">
+      <div class="col-12">
+        <button type="submit" class="btn btn-success float-right">Submit Form</button>
+      </div>
+    </div>
   </form>
 </div>
