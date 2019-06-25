@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container mat-elevation-z8 spacing-top\"  >\n  <form class=\"example-form\">\n    <div class=\"row\">\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Favorite food\" value=\"Sushi\" />\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Favorite food\" value=\"Sushi\" />\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Favorite food\" value=\"Sushi\" />\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n            <textarea matInput placeholder=\"Leave a comment\" cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <mat-form-field class=\"example-full-width\">\n          <textarea matInput placeholder=\"Leave a comment\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n\n    <div class=\"row\" style=\"margin-top: 40px;padding-bottom: 24px;\">\n      <div class=\"col-12\">\n        <button type=\"submit\" class=\"btn btn-success float-md-right\">Submit Form</button>\n      </div>\n    </div>\n  </form>\n</div>\n"
+module.exports = "\n<div class=\"container mat-elevation-z8 spacing-top\"  >\n  <form class=\"example-form\" [formGroup]=\"form\"  (submit)=\"submit()\" >\n    <div class=\"row\">\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"First Name *\" formControlName=\"firstName\"  />\n          <mat-error *ngIf=\"form.controls.firstName.hasError('required')\">\n            First Name is <strong>required</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Last Name *\"  formControlName=\"lastName\" />\n          <mat-error *ngIf=\"form.controls.lastName.hasError('StartWithLetters')\">\n            Last Name has to <strong>start with a letter</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Favorite food\" value=\"Sushi\" />\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n            <textarea matInput placeholder=\"Leave a comment\" cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <mat-form-field class=\"example-full-width\">\n          <textarea matInput placeholder=\"Leave a comment\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n\n    <div class=\"row\" style=\"margin-top: 40px;padding-bottom: 24px;\">\n      <div class=\"col-12\">\n        <button type=\"submit\" class=\"btn btn-success float-md-right\">Submit Form</button>\n      </div>\n    </div>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -222,6 +222,35 @@ var ApiCallsService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_validators/custom.validators.ts":
+/*!**************************************************!*\
+  !*** ./src/app/_validators/custom.validators.ts ***!
+  \**************************************************/
+/*! exports provided: ValidateArrayEmpty, StartWithLetters */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidateArrayEmpty", function() { return ValidateArrayEmpty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartWithLetters", function() { return StartWithLetters; });
+function ValidateArrayEmpty(control) {
+    console.log('length  ', control.value);
+    if (control.value && control.value.length > 0) {
+        return null;
+    }
+    return { emptyArray: true };
+}
+function StartWithLetters(control) {
+    console.log('value  ', control.value);
+    if (control.value.toUpperCase().match(/^[A-Z]/i)) {
+        return null;
+    }
+    return { StartWithLetters: true };
+}
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -262,7 +291,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-full-width {\n  width: 100%;\n}\n\ntextarea.mat-input-element {\n  padding: 0;\n  margin: -2px 0;\n}\n\n.spacing-top {\n  margin-top: 20px;\n  padding-top: 20px;\n  background-color: white;\n}\n\n@media (max-width: 575.98px) {\n  .spacing-top {\n    margin-top: 0px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxkZ29uemFsZXphbGF5b25cXERlc2t0b3BcXG5ld1xcbmdfZXhwcmVzc19mb3Jtc1xcY2xpZW50YXBwL3NyY1xcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQTtFQUNFLFdBQUE7QUNMRjs7QURTQTtFQUNFLFVBQUE7RUFDQSxjQUFBO0FDTkY7O0FEU0E7RUFDRSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7QUNORjs7QURTQTtFQUVFO0lBQ0UsZUFBQTtFQ1BGO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyAuZXhhbXBsZS1mb3JtIHtcclxuLy8gICBtaW4td2lkdGg6IDE1MHB4O1xyXG4vLyAgIG1heC13aWR0aDogNTAwcHg7XHJcbi8vICAgd2lkdGg6IDEwMCU7XHJcbi8vIH1cclxuXHJcbi5leGFtcGxlLWZ1bGwtd2lkdGgge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG5cclxudGV4dGFyZWEubWF0LWlucHV0LWVsZW1lbnQge1xyXG4gIHBhZGRpbmc6IDA7XHJcbiAgbWFyZ2luOiAtMnB4IDA7XHJcbn1cclxuXHJcbi5zcGFjaW5nLXRvcHtcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5AbWVkaWEgKG1heC13aWR0aDogNTc1Ljk4cHgpIHtcclxuXHJcbiAgLnNwYWNpbmctdG9we1xyXG4gICAgbWFyZ2luLXRvcDogMHB4O1xyXG4gIH1cclxufVxyXG5cclxuXHJcbiIsIi5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTtcbn1cblxudGV4dGFyZWEubWF0LWlucHV0LWVsZW1lbnQge1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IC0ycHggMDtcbn1cblxuLnNwYWNpbmctdG9wIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG5AbWVkaWEgKG1heC13aWR0aDogNTc1Ljk4cHgpIHtcbiAgLnNwYWNpbmctdG9wIHtcbiAgICBtYXJnaW4tdG9wOiAwcHg7XG4gIH1cbn0iXX0= */"
+module.exports = ".example-full-width {\n  width: 100%;\n}\n\ntextarea.mat-input-element {\n  padding: 0;\n  margin: -2px 0;\n}\n\n.spacing-top {\n  margin-top: 20px;\n  padding-top: 20px;\n  background-color: white;\n}\n\n@media (max-width: 575.98px) {\n  .spacing-top {\n    margin-top: 0px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxkZ29uemFsZXphbGF5b25cXERlc2t0b3BcXG5nX2V4cHJlc3NfZm9ybXNcXGNsaWVudGFwcC9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTUE7RUFDRSxXQUFBO0FDTEY7O0FEU0E7RUFDRSxVQUFBO0VBQ0EsY0FBQTtBQ05GOztBRFNBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLHVCQUFBO0FDTkY7O0FEU0E7RUFFRTtJQUNFLGVBQUE7RUNQRjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gLmV4YW1wbGUtZm9ybSB7XHJcbi8vICAgbWluLXdpZHRoOiAxNTBweDtcclxuLy8gICBtYXgtd2lkdGg6IDUwMHB4O1xyXG4vLyAgIHdpZHRoOiAxMDAlO1xyXG4vLyB9XHJcblxyXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuXHJcbnRleHRhcmVhLm1hdC1pbnB1dC1lbGVtZW50IHtcclxuICBwYWRkaW5nOiAwO1xyXG4gIG1hcmdpbjogLTJweCAwO1xyXG59XHJcblxyXG4uc3BhY2luZy10b3B7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxuICBwYWRkaW5nLXRvcDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDU3NS45OHB4KSB7XHJcblxyXG4gIC5zcGFjaW5nLXRvcHtcclxuICAgIG1hcmdpbi10b3A6IDBweDtcclxuICB9XHJcbn1cclxuXHJcblxyXG4iLCIuZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbnRleHRhcmVhLm1hdC1pbnB1dC1lbGVtZW50IHtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiAtMnB4IDA7XG59XG5cbi5zcGFjaW5nLXRvcCB7XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIHBhZGRpbmctdG9wOiAyMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuQG1lZGlhIChtYXgtd2lkdGg6IDU3NS45OHB4KSB7XG4gIC5zcGFjaW5nLXRvcCB7XG4gICAgbWFyZ2luLXRvcDogMHB4O1xuICB9XG59Il19 */"
 
 /***/ }),
 
@@ -279,18 +308,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_api_calls_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_services/api-calls.service */ "./src/app/_services/api-calls.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _validators_custom_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_validators/custom.validators */ "./src/app/_validators/custom.validators.ts");
+
+
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(apiCallsService) {
+    function AppComponent(fb, apiCallsService) {
+        this.fb = fb;
         this.apiCallsService = apiCallsService;
         this.title = 'clientapp';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.form = this.fb.group({
+            firstName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            lastName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _validators_custom_validators__WEBPACK_IMPORTED_MODULE_4__["StartWithLetters"]]],
+            zipCode: [''],
+        });
+    };
     AppComponent.prototype.testServer = function () {
         this.apiCallsService.testServer().subscribe(function (res) {
             console.log(res);
         });
+    };
+    AppComponent.prototype.submit = function () {
+        console.log(this.form);
     };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -298,7 +342,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_api_calls_service__WEBPACK_IMPORTED_MODULE_2__["ApiCallsService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _services_api_calls_service__WEBPACK_IMPORTED_MODULE_2__["ApiCallsService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -427,7 +471,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\dgonzalezalayon\Desktop\new\ng_express_forms\clientapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\dgonzalezalayon\Desktop\ng_express_forms\clientapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })
