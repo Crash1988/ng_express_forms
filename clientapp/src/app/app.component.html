@@ -1,14 +1,21 @@
 <div class="container mat-elevation-z8 spacing-top">
   <form class="example-form" [formGroup]="form" (submit)="submit()">
-    <div class="row"  style="margin-top: 15px">
+    <div class="row" style="margin-top: 15px">
       <div class="col-12">
-          <h5><strong class="badge badge-secondary">Test cases:</strong> First Name is required, Last Name have to start only with a Letter</h5>
-        </div>
+        <h5>
+          <strong class="badge badge-secondary">Test cases:</strong> First Name
+          is required, Last Name have to start only with a Letter
+        </h5>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="First Name *" formControlName="firstName" />
+          <input
+            matInput
+            placeholder="First Name *"
+            formControlName="firstName"
+          />
           <mat-error *ngIf="form.controls.firstName.hasError('required')">
             First Name is <strong>required</strong>
           </mat-error>
@@ -16,27 +23,45 @@
       </div>
       <div class="col-md-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Last Name *" formControlName="lastName" />
-          <mat-error *ngIf="form.controls.lastName.hasError('StartWithLetters')">
+          <input
+            matInput
+            placeholder="Last Name *"
+            formControlName="lastName"
+          />
+          <mat-error
+            *ngIf="form.controls.lastName.hasError('StartWithLetters')"
+          >
             Last Name has to <strong>start with a letter</strong>
           </mat-error>
         </mat-form-field>
       </div>
-
     </div>
     <div class="row" style="margin-top: 15px">
       <div class="col-12 ">
-        <h5> <strong class="badge badge-secondary">Test cases:</strong> Zip code and State should match</h5>
+        <h5>
+          <strong class="badge badge-secondary">Test cases:</strong> Zip code
+          and State should match
+        </h5>
       </div>
     </div>
-    <div class="row" formGroupName="stateZipGroup" style="margin-left: -5px; margin-right: 0; padding-top: 5px;"
-      [ngClass]="{'invalid-field': form.get('stateZipGroup').hasError('invalidZipState') ||
-        ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.state').touched ) &&
-        form.get('stateZipGroup').hasError('invalidZipState')  )}">
+    <div
+      class="row"
+      formGroupName="stateZipGroup"
+      style="margin-left: -5px; margin-right: 0; padding-top: 5px;"
+      [ngClass]="{
+        'invalid-field':
+          form.get('stateZipGroup').hasError('invalidZipState') ||
+          ((form.get('stateZipGroup.zipCode').touched ||
+            form.get('stateZipGroup.state').touched) &&
+            form.get('stateZipGroup').hasError('invalidZipState'))
+      }"
+    >
       <div class="col-md-3 " style="padding-left: 5px">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Zip Code *" formControlName="zipCode" />
-          <mat-error *ngIf="form.controls.lastName.hasError('StartWithLetters')">
+          <mat-error
+            *ngIf="form.controls.lastName.hasError('StartWithLetters')"
+          >
             Zip Code is <strong>Required</strong>
           </mat-error>
         </mat-form-field>
@@ -46,21 +71,28 @@
           <mat-label> State *</mat-label>
           <mat-select formControlName="state">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let state of usStates" [value]="state.StateCode">
-              {{state.StateFullName}}
+            <mat-option
+              *ngFor="let state of usStates"
+              [value]="state.StateCode"
+            >
+              {{ state.StateFullName }}
             </mat-option>
           </mat-select>
-          <mat-error>
-            State is <strong>Required</strong>
-          </mat-error>
+          <mat-error> State is <strong>Required</strong> </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-md-5 " style="display: flex; align-items: center;" *ngIf="form.get('stateZipGroup').hasError('invalidZipState')||
-        ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.state').touched ) &&
-        form.get('stateZipGroup').hasError('invalidZipState')  )">
+      <div
+        class="col-md-5 "
+        style="display: flex; align-items: center;"
+        *ngIf="
+          form.get('stateZipGroup').hasError('invalidZipState') ||
+          ((form.get('stateZipGroup.zipCode').touched ||
+            form.get('stateZipGroup.state').touched) &&
+            form.get('stateZipGroup').hasError('invalidZipState'))
+        "
+      >
         <strong class="text-danger">Invalid Zip Code for selected state</strong>
       </div>
-
     </div>
     <div class="row">
       <div class="col-12">
@@ -72,7 +104,9 @@
 
     <div class="row" style="margin-top: 40px;padding-bottom: 24px;">
       <div class="col-12">
-        <button type="submit" class="btn btn-success float-md-right">Submit Form</button>
+        <button type="submit" class="btn btn-success float-md-right">
+          Submit Form
+        </button>
       </div>
     </div>
   </form>

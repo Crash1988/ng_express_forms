@@ -73,14 +73,10 @@ export class AppComponent implements OnInit {
       stateZipGroup: this.fb.group({
         zipCode: [null, [Validators.required]],
         state: [null, [Validators.required]],
-      }, { asyncValidators: ValidateZipCodeNState.createValidator(this.apiCallsService) })
+      }, { asyncValidators: ValidateZipCodeNState(this.apiCallsService) })
     });
   }
-  testServer() {
-    this.apiCallsService.checkzipcodebystate(this.form.value.zipCode, 'IL').subscribe(res => {
-      console.log(res);
-    });
-  }
+  
   submit() {
     console.log(this.form.get('stateZipGroup').hasError('invalidZipState'));
     if (!this.form.valid) {
