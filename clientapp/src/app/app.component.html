@@ -18,16 +18,46 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-md-3">
+
+    </div>
+    <div class="row"  formGroupName="stateZipGroup" style="margin-left: -5px; margin-right: 0; padding-top: 5px;"
+      [ngClass]="{'invalid-field': form.get('stateZipGroup').errors ||
+         ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.zipCode').dirty) &&
+          !form.get('stateZipGroup.zipCode').valid  )}" >
+      <div class="col-md-3 " style="padding-left: 5px">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Favorite food" value="Sushi" />
+          <input matInput placeholder="Zip Code *" formControlName="zipCode"  />
+          <mat-error *ngIf="form.controls.lastName.hasError('StartWithLetters')">
+            Zip Code is  <strong>Required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 ">
+        <!-- <mat-form-field class="example-full-width">
+          <input matInput placeholder="State *"  formControlName="state" />
+
+        </mat-form-field> -->
         <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Leave a comment" cdkTextareaAutosize #autosize="cdkTextareaAutosize"></textarea>
+          <mat-label> State *</mat-label>
+          <mat-select formControlName="state">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let state of usStates" [value]="state.StateCode">
+              {{state.StateFullName}}
+            </mat-option>
+
+          </mat-select>
+          <mat-error>
+            State is <strong>Required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
+      <div class="col-md-5 " style="display: flex; align-items: center;"
+          *ngIf="form.get('stateZipGroup').errors ||
+          ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.zipCode').dirty) &&
+           !form.get('stateZipGroup.zipCode').valid  )" >
+        <strong class="text-danger">Invalid Zip Code for selected state</strong>
+      </div>
+
     </div>
     <div class="row">
       <div class="col-12">

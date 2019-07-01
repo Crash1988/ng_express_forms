@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable, timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
 // tslint:disable-next-line: quotemark
@@ -9,15 +10,23 @@ import { Observable } from 'rxjs';
 export class ApiCallsService {
   constructor(private http: HttpClient) {}
 
-  // QuickIndicationEPL(quickUSEPL: any) {
-  //   return this.http.post<any>('/us/QuickIndicationEPL', quickUSEPL);
-  // }
 
   testServer(): Observable<any> {
     return this.http.get<any>('/api/posts');
   }
 
-  // GetUSEPLNatureOfOperation(): Observable<nop[]> {
-  //  return this.http.get<nop[]>('/us/GetUSEPLNatureOfOperation');
-  // }
+  checkzipcodebystate(zipCode: string, state: string): Observable<any> {
+    return timer(500)
+      .pipe(
+        switchMap(() => {
+          // Check if username is available
+          const params = new HttpParams().append("zipcode", zipCode).append("state", state);
+          return this.http.get<any>('/api/checkzipcodebystate', {params});
+        })
+      );
+
+  }
+
+
+
 }

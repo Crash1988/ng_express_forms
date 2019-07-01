@@ -20,6 +20,13 @@ textarea.mat-input-element {
   background-color: white;
 }
 
+.invalid-field{
+  background-color: #dc354520 !important;
+}
+
+.row{
+  margin-top: 5px;
+}
 @media (max-width: 575.98px) {
 
   .spacing-top{

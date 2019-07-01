@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container mat-elevation-z8 spacing-top\"  >\n  <form class=\"example-form\" [formGroup]=\"form\"  (submit)=\"submit()\" >\n    <div class=\"row\">\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"First Name *\" formControlName=\"firstName\"  />\n          <mat-error *ngIf=\"form.controls.firstName.hasError('required')\">\n            First Name is <strong>required</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Last Name *\"  formControlName=\"lastName\" />\n          <mat-error *ngIf=\"form.controls.lastName.hasError('StartWithLetters')\">\n            Last Name has to <strong>start with a letter</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Favorite food\" value=\"Sushi\" />\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n            <textarea matInput placeholder=\"Leave a comment\" cdkTextareaAutosize #autosize=\"cdkTextareaAutosize\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <mat-form-field class=\"example-full-width\">\n          <textarea matInput placeholder=\"Leave a comment\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n\n    <div class=\"row\" style=\"margin-top: 40px;padding-bottom: 24px;\">\n      <div class=\"col-12\">\n        <button type=\"submit\" class=\"btn btn-success float-md-right\">Submit Form</button>\n      </div>\n    </div>\n  </form>\n</div>\n"
+module.exports = "\n<div class=\"container mat-elevation-z8 spacing-top\"  >\n  <form class=\"example-form\" [formGroup]=\"form\"  (submit)=\"submit()\" >\n    <div class=\"row\">\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"First Name *\" formControlName=\"firstName\"  />\n          <mat-error *ngIf=\"form.controls.firstName.hasError('required')\">\n            First Name is <strong>required</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Last Name *\"  formControlName=\"lastName\" />\n          <mat-error *ngIf=\"form.controls.lastName.hasError('StartWithLetters')\">\n            Last Name has to <strong>start with a letter</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n\n    </div>\n    <div class=\"row\"  formGroupName=\"stateZipGroup\" style=\"margin-left: -5px; margin-right: 0; padding-top: 5px;\"\n      [ngClass]=\"{'invalid-field': form.get('stateZipGroup').errors ||\n         ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.zipCode').dirty) &&\n          !form.get('stateZipGroup.zipCode').valid  )}\" >\n      <div class=\"col-md-3 \" style=\"padding-left: 5px\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Zip Code *\" formControlName=\"zipCode\"  />\n          <mat-error *ngIf=\"form.controls.lastName.hasError('StartWithLetters')\">\n            Zip Code is  <strong>Required</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-3 \">\n        <!-- <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"State *\"  formControlName=\"state\" />\n\n        </mat-form-field> -->\n        <mat-form-field class=\"example-full-width\">\n          <mat-label> State *</mat-label>\n          <mat-select formControlName=\"state\">\n            <mat-option>None</mat-option>\n            <mat-option *ngFor=\"let state of usStates\" [value]=\"state.StateCode\">\n              {{state.StateFullName}}\n            </mat-option>\n\n          </mat-select>\n          <mat-error>\n            State is <strong>Required</strong>\n          </mat-error>\n        </mat-form-field>\n      </div>\n      <div class=\"col-md-5 \" style=\"display: flex; align-items: center;\"\n          *ngIf=\"form.get('stateZipGroup').errors ||\n          ((form.get('stateZipGroup.zipCode').touched || form.get('stateZipGroup.zipCode').dirty) &&\n           !form.get('stateZipGroup.zipCode').valid  )\" >\n        <strong class=\"text-danger\">Invalid Zip Code for selected state</strong>\n      </div>\n\n    </div>\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <mat-form-field class=\"example-full-width\">\n          <textarea matInput placeholder=\"Leave a comment\"></textarea>\n        </mat-form-field>\n      </div>\n    </div>\n\n    <div class=\"row\" style=\"margin-top: 40px;padding-bottom: 24px;\">\n      <div class=\"col-12\">\n        <button type=\"submit\" class=\"btn btn-success float-md-right\">Submit Form</button>\n      </div>\n    </div>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -195,6 +195,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
 
 
 
@@ -202,11 +206,17 @@ var ApiCallsService = /** @class */ (function () {
     function ApiCallsService(http) {
         this.http = http;
     }
-    // QuickIndicationEPL(quickUSEPL: any) {
-    //   return this.http.post<any>('/us/QuickIndicationEPL', quickUSEPL);
-    // }
     ApiCallsService.prototype.testServer = function () {
         return this.http.get('/api/posts');
+    };
+    ApiCallsService.prototype.checkzipcodebystate = function (zipCode, state) {
+        var _this = this;
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(500)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () {
+            // Check if username is available
+            var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().append("zipcode", zipCode).append("state", state);
+            return _this.http.get('/api/checkzipcodebystate', { params: params });
+        }));
     };
     ApiCallsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -226,13 +236,18 @@ var ApiCallsService = /** @class */ (function () {
 /*!**************************************************!*\
   !*** ./src/app/_validators/custom.validators.ts ***!
   \**************************************************/
-/*! exports provided: ValidateArrayEmpty, StartWithLetters */
+/*! exports provided: ValidateArrayEmpty, StartWithLetters, ValidateZipCodeNState */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidateArrayEmpty", function() { return ValidateArrayEmpty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartWithLetters", function() { return StartWithLetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidateZipCodeNState", function() { return ValidateZipCodeNState; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
 function ValidateArrayEmpty(control) {
     console.log('length  ', control.value);
     if (control.value && control.value.length > 0) {
@@ -247,6 +262,29 @@ function StartWithLetters(control) {
     }
     return { StartWithLetters: true };
 }
+// async Validator
+// is wrapped in a class so we can pass the service needed to make the back end call
+var ValidateZipCodeNState = /** @class */ (function () {
+    function ValidateZipCodeNState() {
+    }
+    ValidateZipCodeNState.createValidator = function (apiCallsService) {
+        return function (control) {
+            if (!control.value.zipCode || !control.value.state) {
+                console.log('entered', control.value.zipCode, control.value.state);
+                return new rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"](null);
+            }
+            return apiCallsService.checkzipcodebystate(control.value.zipCode, control.value.state).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
+                if (res && !res.isValid) {
+                    // return error
+                    return { invalidZipState: true };
+                }
+                return null;
+            }));
+        };
+    };
+    return ValidateZipCodeNState;
+}());
+
 
 
 /***/ }),
@@ -291,7 +329,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-full-width {\n  width: 100%;\n}\n\ntextarea.mat-input-element {\n  padding: 0;\n  margin: -2px 0;\n}\n\n.spacing-top {\n  margin-top: 20px;\n  padding-top: 20px;\n  background-color: white;\n}\n\n@media (max-width: 575.98px) {\n  .spacing-top {\n    margin-top: 0px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxkZ29uemFsZXphbGF5b25cXERlc2t0b3BcXG5nX2V4cHJlc3NfZm9ybXNcXGNsaWVudGFwcC9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTUE7RUFDRSxXQUFBO0FDTEY7O0FEU0E7RUFDRSxVQUFBO0VBQ0EsY0FBQTtBQ05GOztBRFNBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLHVCQUFBO0FDTkY7O0FEU0E7RUFFRTtJQUNFLGVBQUE7RUNQRjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gLmV4YW1wbGUtZm9ybSB7XHJcbi8vICAgbWluLXdpZHRoOiAxNTBweDtcclxuLy8gICBtYXgtd2lkdGg6IDUwMHB4O1xyXG4vLyAgIHdpZHRoOiAxMDAlO1xyXG4vLyB9XHJcblxyXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuXHJcbnRleHRhcmVhLm1hdC1pbnB1dC1lbGVtZW50IHtcclxuICBwYWRkaW5nOiAwO1xyXG4gIG1hcmdpbjogLTJweCAwO1xyXG59XHJcblxyXG4uc3BhY2luZy10b3B7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxuICBwYWRkaW5nLXRvcDogMjBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDU3NS45OHB4KSB7XHJcblxyXG4gIC5zcGFjaW5nLXRvcHtcclxuICAgIG1hcmdpbi10b3A6IDBweDtcclxuICB9XHJcbn1cclxuXHJcblxyXG4iLCIuZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbnRleHRhcmVhLm1hdC1pbnB1dC1lbGVtZW50IHtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiAtMnB4IDA7XG59XG5cbi5zcGFjaW5nLXRvcCB7XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIHBhZGRpbmctdG9wOiAyMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuQG1lZGlhIChtYXgtd2lkdGg6IDU3NS45OHB4KSB7XG4gIC5zcGFjaW5nLXRvcCB7XG4gICAgbWFyZ2luLXRvcDogMHB4O1xuICB9XG59Il19 */"
+module.exports = ".example-full-width {\n  width: 100%;\n}\n\ntextarea.mat-input-element {\n  padding: 0;\n  margin: -2px 0;\n}\n\n.spacing-top {\n  margin-top: 20px;\n  padding-top: 20px;\n  background-color: white;\n}\n\n.invalid-field {\n  background-color: #dc354520 !important;\n}\n\n.row {\n  margin-top: 5px;\n}\n\n@media (max-width: 575.98px) {\n  .spacing-top {\n    margin-top: 0px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxkZ29uemFsZXphbGF5b25cXERlc2t0b3BcXG5nX2V4cHJlc3NfZm9ybXNcXGNsaWVudGFwcC9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTUE7RUFDRSxXQUFBO0FDTEY7O0FEU0E7RUFDRSxVQUFBO0VBQ0EsY0FBQTtBQ05GOztBRFNBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLHVCQUFBO0FDTkY7O0FEU0E7RUFDRSxzQ0FBQTtBQ05GOztBRFNBO0VBQ0UsZUFBQTtBQ05GOztBRFFBO0VBRUU7SUFDRSxlQUFBO0VDTkY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIC5leGFtcGxlLWZvcm0ge1xyXG4vLyAgIG1pbi13aWR0aDogMTUwcHg7XHJcbi8vICAgbWF4LXdpZHRoOiA1MDBweDtcclxuLy8gICB3aWR0aDogMTAwJTtcclxuLy8gfVxyXG5cclxuLmV4YW1wbGUtZnVsbC13aWR0aCB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcblxyXG50ZXh0YXJlYS5tYXQtaW5wdXQtZWxlbWVudCB7XHJcbiAgcGFkZGluZzogMDtcclxuICBtYXJnaW46IC0ycHggMDtcclxufVxyXG5cclxuLnNwYWNpbmctdG9we1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgcGFkZGluZy10b3A6IDIwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5pbnZhbGlkLWZpZWxke1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNkYzM1NDUyMCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ucm93e1xyXG4gIG1hcmdpbi10b3A6IDVweDtcclxufVxyXG5AbWVkaWEgKG1heC13aWR0aDogNTc1Ljk4cHgpIHtcclxuXHJcbiAgLnNwYWNpbmctdG9we1xyXG4gICAgbWFyZ2luLXRvcDogMHB4O1xyXG4gIH1cclxufVxyXG5cclxuXHJcbiIsIi5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTtcbn1cblxudGV4dGFyZWEubWF0LWlucHV0LWVsZW1lbnQge1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IC0ycHggMDtcbn1cblxuLnNwYWNpbmctdG9wIHtcbiAgbWFyZ2luLXRvcDogMjBweDtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4uaW52YWxpZC1maWVsZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkYzM1NDUyMCAhaW1wb3J0YW50O1xufVxuXG4ucm93IHtcbiAgbWFyZ2luLXRvcDogNXB4O1xufVxuXG5AbWVkaWEgKG1heC13aWR0aDogNTc1Ljk4cHgpIHtcbiAgLnNwYWNpbmctdG9wIHtcbiAgICBtYXJnaW4tdG9wOiAwcHg7XG4gIH1cbn0iXX0= */"
 
 /***/ }),
 
@@ -320,21 +358,84 @@ var AppComponent = /** @class */ (function () {
         this.fb = fb;
         this.apiCallsService = apiCallsService;
         this.title = 'clientapp';
+        this.usStates = [
+            { StateCode: "AL", StateFullName: "ALABAMA", StateType: "State" },
+            { StateCode: "AK", StateFullName: "ALASKA", StateType: "State" },
+            { StateCode: "AZ", StateFullName: "ARIZONA", StateType: "State" },
+            { StateCode: "AR", StateFullName: "ARKANSAS", StateType: "State" },
+            { StateCode: "CA", StateFullName: "CALIFORNIA", StateType: "State" },
+            { StateCode: "CO", StateFullName: "COLORADO", StateType: "State" },
+            { StateCode: "CT", StateFullName: "CONNECTICUT", StateType: "State" },
+            { StateCode: "DE", StateFullName: "DELAWARE", StateType: "State" },
+            { StateCode: "FL", StateFullName: "FLORIDA", StateType: "State" },
+            { StateCode: "GA", StateFullName: "GEORGIA", StateType: "State" },
+            { StateCode: "HI", StateFullName: "HAWAII", StateType: "State" },
+            { StateCode: "ID", StateFullName: "IDAHO", StateType: "State" },
+            { StateCode: "IL", StateFullName: "ILLINOIS", StateType: "State" },
+            { StateCode: "IN", StateFullName: "INDIANA", StateType: "State" },
+            { StateCode: "IA", StateFullName: "IOWA", StateType: "State" },
+            { StateCode: "KS", StateFullName: "KANSAS", StateType: "State" },
+            { StateCode: "KY", StateFullName: "KENTUCKY", StateType: "State" },
+            { StateCode: "LA", StateFullName: "LOUISIANA", StateType: "State" },
+            { StateCode: "ME", StateFullName: "MAINE", StateType: "State" },
+            { StateCode: "MD", StateFullName: "MARYLAND", StateType: "State" },
+            { StateCode: "MA", StateFullName: "MASSACHUSETTS", StateType: "State" },
+            { StateCode: "MI", StateFullName: "MICHIGAN", StateType: "State" },
+            { StateCode: "MN", StateFullName: "MINNESOTA", StateType: "State" },
+            { StateCode: "MS", StateFullName: "MISSISSIPPI", StateType: "State" },
+            { StateCode: "MO", StateFullName: "MISSOURI", StateType: "State" },
+            { StateCode: "MT", StateFullName: "MONTANA", StateType: "State" },
+            { StateCode: "NE", StateFullName: "NEBRASKA", StateType: "State" },
+            { StateCode: "NV", StateFullName: "NEVADA", StateType: "State" },
+            { StateCode: "NH", StateFullName: "NEW HAMPSHIRE", StateType: "State" },
+            { StateCode: "NJ", StateFullName: "NEW JERSEY", StateType: "State" },
+            { StateCode: "NM", StateFullName: "NEW MEXICO", StateType: "State" },
+            { StateCode: "NY", StateFullName: "NEW YORK", StateType: "State" },
+            { StateCode: "NC", StateFullName: "NORTH CAROLINA", StateType: "State" },
+            { StateCode: "ND", StateFullName: "NORTH DAKOTA", StateType: "State" },
+            { StateCode: "OH", StateFullName: "OHIO", StateType: "State" },
+            { StateCode: "OK", StateFullName: "OKLAHOMA", StateType: "State" },
+            { StateCode: "OR", StateFullName: "OREGON", StateType: "State" },
+            { StateCode: "PA", StateFullName: "PENNSYLVANIA", StateType: "State" },
+            { StateCode: "RI", StateFullName: "RHODE ISLAND", StateType: "State" },
+            { StateCode: "SC", StateFullName: "SOUTH CAROLINA", StateType: "State" },
+            { StateCode: "SD", StateFullName: "SOUTH DAKOTA", StateType: "State" },
+            { StateCode: "TN", StateFullName: "TENNESSEE", StateType: "State" },
+            { StateCode: "TX", StateFullName: "TEXAS", StateType: "State" },
+            { StateCode: "UT", StateFullName: "UTAH", StateType: "State" },
+            { StateCode: "VT", StateFullName: "VERMONT", StateType: "State" },
+            { StateCode: "VA", StateFullName: "VIRGINIA", StateType: "State" },
+            { StateCode: "WA", StateFullName: "WASHINGTON", StateType: "State" },
+            { StateCode: "DC", StateFullName: "WASHINGTON D.C.", StateType: "State" },
+            { StateCode: "WV", StateFullName: "WEST VIRGINIA", StateType: "State" },
+            { StateCode: "WI", StateFullName: "WISCONSIN", StateType: "State" },
+            { StateCode: "WY", StateFullName: "WYOMING", StateType: "State" }
+        ];
     }
     AppComponent.prototype.ngOnInit = function () {
         this.form = this.fb.group({
             firstName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             lastName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _validators_custom_validators__WEBPACK_IMPORTED_MODULE_4__["StartWithLetters"]]],
-            zipCode: [''],
+            //  zipCode: [''],
+            //  state: [''],
+            stateZipGroup: this.fb.group({
+                zipCode: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]],
+                state: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]],
+            }, { asyncValidators: _validators_custom_validators__WEBPACK_IMPORTED_MODULE_4__["ValidateZipCodeNState"].createValidator(this.apiCallsService) })
         });
     };
     AppComponent.prototype.testServer = function () {
-        this.apiCallsService.testServer().subscribe(function (res) {
+        this.apiCallsService.checkzipcodebystate(this.form.value.zipCode, 'IL').subscribe(function (res) {
             console.log(res);
         });
     };
     AppComponent.prototype.submit = function () {
         console.log(this.form);
+        if (!this.form.valid) {
+            return;
+        }
+        alert('form is Valid for Submit! check the console!');
+        console.log(JSON.stringify(this.form.value, null, 2));
     };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
