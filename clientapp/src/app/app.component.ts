@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
     });
   }
   submit() {
-    console.log(this.form);
+    console.log(this.form.get('stateZipGroup').hasError('invalidZipState'));
     if (!this.form.valid) {
       return;
     }
