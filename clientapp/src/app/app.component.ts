@@ -70,8 +70,6 @@ export class AppComponent implements OnInit {
      this.form = this.fb.group({
        firstName:  ['', Validators.required],
        lastName: ['', [Validators.required, StartWithLetters]],
-      //  zipCode: [''],
-      //  state: [''],
        stateZipGroup: this.fb.group( {
         zipCode: [null, [Validators.required]],
         state: [null, [Validators.required]],
